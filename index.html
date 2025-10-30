@@ -137,13 +137,7 @@
         function capturarMensajesDelChat() {
             setInterval(() => {
                 try {
-                    const style = document.createElement('style');
-    style.textContent = `
-        :root {
-            --chat--color-dark: #000000 !important;
-        }
-    `;
-    document.head.appendChild(style);
+                    document.head.appendChild(style);
                     const chatContainer = document.querySelector('#n8n-chat');
                     if (!chatContainer) return;
                     const nuevoHistorial = [];
