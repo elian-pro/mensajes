@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Zebra</title>
     <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-    <style> 
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; height: 100%; font-family: Arial, sans-serif; overflow: hidden; background: #ffffff; }
         .main-container { display: flex; flex-direction: column; width: 100%; height: 100vh; }
@@ -137,7 +137,6 @@
         function capturarMensajesDelChat() {
             setInterval(() => {
                 try {
-                    document.head.appendChild(style);
                     const chatContainer = document.querySelector('#n8n-chat');
                     if (!chatContainer) return;
                     const nuevoHistorial = [];
@@ -203,7 +202,7 @@
                     metadata: { sessionId: sessionId },
                     showWelcomeScreen: false,
                     defaultLanguage: 'es',
-                    i18n: { es: { title: 'Prueba la IA', subtitle: 'Prueba lo que se te ocurra', footer: '', getStarted: 'Iniciar conversación', inputPlaceholder: 'Escribe tu mensaje...' } }
+                    i18n: { es: { title: 'Chat Zebra', subtitle: 'Conversación con memoria persistente', footer: '', getStarted: 'Iniciar conversación', inputPlaceholder: 'Escribe tu mensaje...' } }
                 });
                 console.log('✅ Chat creado exitosamente con sessionId:', sessionId);
                 setTimeout(capturarMensajesDelChat, 2000);
