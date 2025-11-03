@@ -132,9 +132,12 @@
             window.location.href = 'login.html';
         }
 
-        // 🔐 VERIFICAR SI ES ADMINISTRADOR
-        const userRole = sessionStorage.getItem('zebra_user');
-        const isAdmin = (userRole === 'admin');
+        // 🔐 VERIFICAR SI ES ADMINISTRADOR (usando username)
+        const username = sessionStorage.getItem('zebra_user');
+        const isAdmin = (username === 'admin');
+        
+        console.log('🔍 Username detectado:', username);
+        console.log('🔍 ¿Es admin?:', isAdmin);
         
         // 👁️ MOSTRAR ELEMENTOS SOLO PARA ADMINS
         if (isAdmin) {
