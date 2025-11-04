@@ -5,7 +5,7 @@ COPY index.html /var/www/html/
 COPY login.html /var/www/html/
 COPY auth.php /var/www/html/
 COPY users.json /var/www/html/
-COPY Logo_Zebra_Blanco.png /var/www/html/
+COPY Logo_Zebra_Blanco2.png /var/www/html/
 
 # Permisos para que PHP pueda leer users.json
 RUN chmod 644 /var/www/html/users.json
