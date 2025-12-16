@@ -416,6 +416,7 @@
         
         document.getElementById('btnResetSession').addEventListener('click', resetearSesion);
         
+        // 🔥 FUNCIÓN MEJORADA - SOLUCIÓN AL PROBLEMA DEL ÚLTIMO MENSAJE
         document.getElementById('btnAjustar').addEventListener('click', async function() {
             const notasInput = document.getElementById('notasInput');
             const btnAjustar = document.getElementById('btnAjustar');
@@ -434,6 +435,12 @@
             }
             
             btnAjustar.disabled = true;
+            btnAjustar.innerHTML = '<div class="spinner"></div> Capturando mensajes...';
+            mostrarMensaje('⏳ Capturando últimos mensajes del chat...', 'processing');
+            
+            // 🔥 SOLUCIÓN: Esperar 2 segundos para asegurar que el último mensaje se capturó
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
             btnAjustar.innerHTML = '<div class="spinner"></div> Enviando...';
             mostrarMensaje('📤 Enviando correcciones a n8n...', 'processing');
             
@@ -442,6 +449,9 @@
                 window.chatHistory.forEach(msg => {
                     chatTextoPlano += `${msg.role}:${msg.message}\n`;
                 });
+                
+                console.log('📋 Chat capturado con', window.chatHistory.length, 'mensajes');
+                console.log('📋 Último mensaje:', window.chatHistory[window.chatHistory.length - 1]);
                 
                 const sessionId = obtenerSessionId();
                 const payload = {
