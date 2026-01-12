@@ -1,14 +1,17 @@
-FROM node:20-alpine AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-ARG API_KEY
-ENV API_KEY=$API_KEY
-RUN npm run build
+FROM php:8.2-apache
 
-# Etapa 2: Servidor de producción
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copiar archivos al directorio web
+COPY index.html /var/www/html/
+COPY login.html /var/www/html/
+COPY auth.php /var/www/html/
+COPY users.json /var/www/html/
+COPY Logo_Zebra_Blanco.png /var/www/html/
+
+# Permisos para que PHP pueda leer users.json
+RUN chmod 644 /var/www/html/users.json
+
+# Exponer puerto 80
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+# Comando por defecto
+CMD ["apache2-foreground"]
